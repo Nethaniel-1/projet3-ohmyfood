@@ -1,29 +1,67 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&family=Shrikhand&display=swap");
-@-webkit-keyframes fill {
-  0% {
-    width: 0%;
-    /* Remplissage à 0% au début de l'animation */
+.container-category {
+  margin-left: auto;
+  margin-right: auto;
+  width: 700px;
+}
+
+@-webkit-keyframes spin {
+  from {
+    transform: rotate(200deg);
   }
-  100% {
-    width: 100%;
-    /* Remplissage à 100% à la fin de l'animation */
+  to {
+    transform: rotate(390deg);
+    transform-origin: 50% 50%;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(200deg);
+  }
+  to {
+    transform: rotate(390deg);
+    transform-origin: 50% 50%;
+  }
+}
+@-webkit-keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes fill {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
   }
 }
 @keyframes fill {
-  0% {
-    width: 0%;
-    /* Remplissage à 0% au début de l'animation */
+  from {
+    transform: translateX(100%);
   }
-  100% {
-    width: 100%;
-    /* Remplissage à 100% à la fin de l'animation */
+  to {
+    transform: translateX(0);
   }
 }
 body {
   font-family: "roboto", sans-serif;
   margin: 0;
   display: block;
+  background-color: #f7f7f7;
 }
 
 header {
@@ -46,7 +84,8 @@ header i {
 }
 header p {
   font-size: 35px;
-  margin-left: 20%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .image {
@@ -65,16 +104,16 @@ h3 {
 
 /*****************A LA FRANCAISE*******************/
 .title {
-  width: 98.9%;
+  width: 99.5%;
   position: absolute;
   border: 3px solid #f7f7f7;
   background-color: #f7f7f7;
   border-radius: 20px 20px 0 0;
-  margin-top: -100px;
+  margin-top: -76px;
   margin-bottom: 200px;
 }
 .title h3 {
-  font-size: 30px;
+  font-size: 27px;
   font-family: "Shrikhand", cursive;
   font-style: italic;
   font-weight: 400;
@@ -121,17 +160,74 @@ h3 {
 /********************SECTIONS************************/
 .entrées,
 .Plats,
-.Dessert {
+.Desssert {
   padding-top: 20px;
+}
+.entrées .Menu-item:nth-child(1),
+.Plats .Menu-item:nth-child(1),
+.Desssert .Menu-item:nth-child(1) {
+  -webkit-animation: apparitionPlat 700ms ease 300ms forwards;
+          animation: apparitionPlat 700ms ease 300ms forwards;
+}
+.entrées .Menu-item:nth-child(2),
+.Plats .Menu-item:nth-child(2),
+.Desssert .Menu-item:nth-child(2) {
+  -webkit-animation: apparitionPlat 700ms ease 600ms forwards;
+          animation: apparitionPlat 700ms ease 600ms forwards;
+}
+.entrées .Menu-item:nth-child(3),
+.Plats .Menu-item:nth-child(3),
+.Desssert .Menu-item:nth-child(3) {
+  -webkit-animation: apparitionPlat 700ms ease 900ms forwards;
+          animation: apparitionPlat 700ms ease 900ms forwards;
+}
+.entrées .Menu-item:nth-child(4),
+.Plats .Menu-item:nth-child(4),
+.Desssert .Menu-item:nth-child(4) {
+  -webkit-animation: apparitionPlat 700ms ease 1200ms forwards;
+          animation: apparitionPlat 700ms ease 1200ms forwards;
+}
+.entrées .Menu-item:nth-child(5),
+.Plats .Menu-item:nth-child(5),
+.Desssert .Menu-item:nth-child(5) {
+  -webkit-animation: apparitionPlat 700ms ease 1500ms forwards;
+          animation: apparitionPlat 700ms ease 1500ms forwards;
+}
+
+.Menu-item {
+  opacity: 0;
+  transform: translateY(-10px);
 }
 
 .Plats {
   margin-bottom: -18px;
 }
 
-.menu-item {
+@-webkit-keyframes apparitionPlat {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes apparitionPlat {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.Menu-item {
   position: relative;
   overflow: hidden;
+  max-width: 600px;
 }
 
 h2 {
@@ -166,7 +262,6 @@ section > div {
   font-weight: 500;
   border-radius: 17px;
   align-items: center;
-  margin-bottom: 30px;
   width: 76%;
   padding-left: 59px;
   box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.2);
@@ -180,7 +275,9 @@ section > div h3 {
   overflow: hidden;
 }
 section > div p {
-  font-weight: 200;
+  font-weight: 300;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 section > div .item__text {
   margin-left: -45px;
@@ -191,16 +288,16 @@ section > div .item__text {
 section > div .item__text p {
   margin-top: -19px;
 }
+section > div .item__text h3 {
+  font-size: 17px;
+}
 section > div .item__price p {
-  font-size: 20px;
+  font-size: 14px;
   font-weight: bold;
   position: relative;
   top: 15px;
   left: -10px;
   margin-right: 10px;
-}
-section > div .item__price:hover {
-  padding-right: 50px;
 }
 section > div .item__price .Menu-item,
 section > div .item__price .item__text,
@@ -211,24 +308,22 @@ section > div .item__price .check-box {
   color: white;
   position: absolute;
   background-color: #99e2d0;
-  height: 76px;
+  height: 98px;
   padding-left: 16px;
-  margin-top: -62px;
-  margin-left: 34px;
+  margin-top: -69px;
+  margin-left: 21px;
   border-radius: 0 17px 17px 0;
   display: none;
   align-items: center;
   cursor: pointer;
-  margin-right: -169px;
   transition: all 500ms;
 }
 section > div .item__price .check-box i {
   font-size: 28px;
 }
-section > div .item__price:hover .check-box {
-  display: flex;
-  padding-right: 0;
-  position: relative;
+
+.check-box__icone {
+  display: inline;
 }
 
 .btn {
@@ -256,6 +351,59 @@ section > div .item__price:hover .check-box {
 .btn:hover {
   transform: scale(1.02);
   opacity: 0.9;
+}
+
+.btn {
+  background: linear-gradient(166deg, hsl(317deg, 100%, 74%) 0%, #9356dc 100%);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-weight: 500;
+  block-size: 16%;
+  box-shadow: gray 2px 4px 12px -1px;
+  height: 55px;
+  align-items: center;
+  transition: transform 200ms;
+  margin-bottom: 20px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 41px;
+  margin-top: 50px;
+  height: 44px;
+}
+
+.Menu-item:hover {
+  cursor: pointer;
+}
+.Menu-item:hover .check-box__icone {
+  display: inline;
+  transition: transform 0.5s;
+  -webkit-animation: rotation 1s infinite linear;
+          animation: rotation 1s infinite linear;
+}
+.Menu-item:hover .check-box {
+  display: flex;
+  padding-right: 0;
+  position: relative;
+  -webkit-animation: fill 0.1s linear forwards;
+          animation: fill 0.1s linear forwards;
+  width: 100%;
+  overflow: hidden;
+  transform: translateX(100%);
+}
+.Menu-item:hover .check-box i {
+  -webkit-animation: spin 1s linear;
+          animation: spin 1s linear;
+  margin-top: -18px;
+}
+.Menu-item:hover .item__price p {
+  padding-right: 50px;
+  margin-top: 58px;
 }
 
 /****************************FOOTER************************/
@@ -288,4 +436,16 @@ footer li {
 }
 footer ol {
   list-style: none;
+}
+
+@media screen and (min-width: 768px) {
+  .footer img {
+    display: block;
+    margin: auto;
+    padding-bottom: 40px;
+  }
+  .footer ul {
+    display: flex;
+    justify-content: space-around;
+  }
 }/*# sourceMappingURL=Menu.css.map */
