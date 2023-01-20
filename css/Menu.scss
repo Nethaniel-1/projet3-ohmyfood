@@ -7,6 +7,33 @@ $rose: #FF79DA;
 $roseclair: #f5edff;
 $f6: #f6f6f6;
 
+
+
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fill {
+    0% {
+        width: 0%;
+        /* Remplissage à 0% au début de l'animation */
+    }
+
+    100% {
+        width: 100%;
+        /* Remplissage à 100% à la fin de l'animation */
+    }
+}
+
+
+
 body {
     font-family: 'roboto', sans-serif;
     margin: 0;
@@ -133,6 +160,11 @@ h3 {
     margin-bottom: -18px;
 }
 
+.menu-item {
+    position: relative;
+    overflow: hidden;
+}
+
 h2 {
     text-transform: uppercase;
     font-weight: 300;
@@ -147,6 +179,7 @@ h2 {
         background-color: #99e2d0;
         margin-top: 5px;
         margin-bottom: 5px;
+
     }
 }
 
@@ -154,6 +187,8 @@ section {
     background-color: #f6f6f6;
     padding-bottom: 1px;
 }
+
+
 
 section>div {
     display: flex;
@@ -164,7 +199,7 @@ section>div {
     height: 72px;
     background-color: white;
     font-weight: 500;
-    border-radius: 25px;
+    border-radius: 17px;
     align-items: center;
     margin-bottom: 30px;
     width: 76%;
@@ -172,10 +207,12 @@ section>div {
     box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.2);
     font-size: 15px;
     justify-content: space-between;
+    overflow: hidden;
 
     h3 {
-        block-size: 9px;
-        ;
+        block-size: 25px;
+        text-overflow: ellipsis;
+        overflow: hidden;
     }
 
     p {
@@ -183,57 +220,125 @@ section>div {
     }
 
 
-    .item1__text,
-    .item2__text,
-    .item3__text,
-    .item4__text {
-        margin-left: -40px;
+
+    .item__text {
+        margin-left: -45px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+
+        p {
+            margin-top: -19px;
+        }
     }
 
-    .item1__price,
-    .item2__price,
-    .item3__price,
-    .item4__price {
+    .item__price {
         p {
             font-size: 20px;
             font-weight: bold;
             position: relative;
             top: 15px;
+            left: -10px;
             margin-right: 10px;
 
         }
 
 
+        &:hover {
+
+            padding-right: 50px;
+
+        }
+
+        .Menu-item,
+        .item__text,
+        .item__price {
+            padding: 10px;
+        }
+
+
         .check-box {
+            i {
+                font-size: 28px;
+            }
+
+            .fa-sync {
+                animation-name: rotation;
+                animation-duration: 3s;
+                animation-iteration-count: infinite;
+            }
+
+            color: white;
+            position: absolute;
             background-color: #99e2d0;
-            border-radius: 0 20px 20px 0;
-            padding: 0 20px;
-            height: 70px;
+            height: 76px;
+            padding-left: 16px;
+            margin-top: -62px;
+            margin-left: 34px;
+            border-radius: 0 17px 17px 0;
             display: none;
             align-items: center;
-            top: 10px;
-            left: 100px;
-            bottom: 100px;
-
-            ;
-            background-position: 100% 0%;
-
-            transition: all 1.2s ease 1s;
+            cursor: pointer;
+            margin-right: -169px;
+            transition: all 500ms;
         }
 
         &:hover {
+
+
             .check-box {
-                background-image: linear-gradient(to left, #99e2d0, #99e2d0);
+                // animation: fill 0.1s linear;
                 display: flex;
-                position: absolute;
-                background-position: 0% 0%;
+                padding-right: 0;
+                // background-image: linear-gradient(to right, #99e2d0, #99e2d0);
+
+                position: relative;
+
             }
+
+            i {
+                transform: rotation 10s;
+                transition: all 500ms;
+
+            }
+
         }
-
-
     }
 
+
 }
+
+}
+
+.btn {
+    background: linear-gradient(166deg, #ff79da 0%, #9356dc 100%);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-weight: 500;
+    block-size: 19%;
+
+    box-shadow: gray 2px 4px 12px -1px;
+    height: 55px;
+    align-items: center;
+    transition: transform 200ms;
+    margin-bottom: 20px;
+    width: 53%;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 20px;
+    margin-left: 22%;
+    margin-bottom: 41px;
+    margin-top: 50px;
+
+    &:hover {
+        transform: scale(1.02);
+        opacity: 0.9;
+    }
+}
+
 
 /****************************FOOTER************************/
 footer {
